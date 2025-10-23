@@ -9,5 +9,7 @@ $roteador -> namespace("Concessionaria\Projetob\Controller");
 // rota principal
 $roteador -> group(null);
 $roteador -> get("/", "Principal:inicio");
+$roteador -> get("/proposta", "PropostaController:inicio");
+$roteador -> post("/proposta", "PropostaController:enviar");
 
 $roteador -> dispatch();
