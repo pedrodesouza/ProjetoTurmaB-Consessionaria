@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de veiculos</title>
+</head>
+<style>
+    header {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            width: 100%;
+            z-index: 1000;
+            margin-bottom: 30px; /* Espaço entre o header e os cards */
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo h1 {
+            font-size: 50px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .navigation ul  a:hover {
+            color: #667eea;
+        }
+
+
+</style>
+<body>
+            <header>
+                <div class="header-container">
+                    <div class="logo">
+                        <h1>Concessionária</h1>
+                    </div>
+                </div>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="#">Adicionar/editar veiculo</a></li>
+                    </ul>
+            </header>
+</body>
+</html>
