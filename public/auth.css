@@ -1,0 +1,158 @@
+                                        /*CSS DO REGISTER.HTML*/
+
+#body_registerhtml{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-image: url(/src/View/img/backgroundSite.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#header_registerhtml{
+    font-size: 190%;
+    color: #7c67d9ff;
+    margin-bottom: -7%;
+}
+
+#main_registerhtml{
+    width: 75%;
+}
+
+#form_registerhtml{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 160%;
+    margin-bottom: 6%;
+}
+
+#form_registerhtml label{
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
+#Nome_User_registerhtml{
+    border-radius: 30px;
+    font-size: 95%;
+    width: 98%;
+    height: 5vh;
+}
+
+#Email_User_registerhtml{
+    border-radius: 30px;
+    font-size: 95%;
+    width: 98%;
+    height: 5vh;
+}
+
+#Senha_User_registerhtml{
+    border-radius: 30px;
+    font-size: 95%;
+    width: 98%;
+    height: 5vh;
+}
+
+#Enviar_registerhtml{
+    border-radius: 27px;
+    color: white;
+    font-size: 123%;
+    width: 100%;
+    height: 6vh;
+    margin-top: 14%;
+    margin-bottom: 6%;
+    cursor: pointer;
+    background-image: url(/src/View/img/backgroundSite.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#div_registerhtml{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 6%;
+    border: solid 2px;
+    border-color: #7c67d9ff;
+    border-radius: 10px;
+    width: 27%;
+        background-color: rgb(255, 255, 255);
+}
+
+                                        /*CSS DO LOGIN.HTML*/
+
+#body_loginhtml{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-image: url(/src/View/img/backgroundSite.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#header_loginhtml{
+    font-size: 190%;
+    color: #7c67d9ff;
+    margin-bottom: -7%;
+}
+
+#main_loginhtml{
+    width: 75%;
+}
+
+#form_loginhtml{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 160%;
+    margin-bottom: 6%;
+}
+
+#form_loginhtml label{
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
+#Email_User_loginhtml{
+    border-radius: 30px;
+    font-size: 95%;
+    width: 98%;
+    height: 5vh;
+}
+
+#Senha_User_loginhtml{
+    border-radius: 30px;
+    font-size: 95%;
+    width: 98%;
+    height: 5vh;
+}
+
+#Enviar_loginhtml{
+    border-radius: 27px;
+    color: white;
+    font-size: 123%;
+    width: 100%;
+    height: 6vh;
+    margin-top: 14%;
+    margin-bottom: 6%;
+    cursor: pointer;
+    background-image: url(/src/View/img/backgroundSite.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#div_loginhtml{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 9%;
+    border: solid 2px;
+    border-color: #7c67d9ff;
+    border-radius: 10px;
+    width: 27%;
+        background-color: rgb(255, 255, 255);
+}
