@@ -49,6 +49,21 @@
             color: #667eea;
         }
 
+        table{
+            margin: 50px 4%;
+            border: 1px double #cfcfcf;
+            width: 90%;
+        }
+
+        table tbody tr:hover{
+background-color:rgb(212, 212, 212);
+}
+th{
+background-color: #b5b5b5;
+font-family: 'Passero One', sans-serif;
+color:rgb(0, 0, 0);
+}
+
 
 </style>
 <body>
@@ -63,5 +78,26 @@
                         <li><a href="#">Adicionar/editar veiculo</a></li>
                     </ul>
             </header>
+
+            <table>
+                <thead>
+                    <tr>
+                    <th>Id</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Preço</th>
+                    <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><input type ="radio" name="Selecionarveic">1</td>
+                    <td>Toyota</td>
+                    <td><a href="#">Corolla</a></td>
+                </tbody>
+                <tfoot>
+                        <td><button name="btnExcluir" type="submit" onclick="if(confirm('deseja realmente excluir o registro?\n Essa operação não pode ser desfeita!!!')) this.parentElement.submit()">Remover Veiculo</button>
+                </tfoot>
+            </table>
 </body>
 </html>
