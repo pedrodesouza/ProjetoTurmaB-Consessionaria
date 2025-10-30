@@ -9,20 +9,22 @@ class Database
 
     public function __construct()
     {
-        $this->conexao = new \PDO("mysql:host=localhost;dbname=dbSistema", "root", "");
+        $this->conexao = new \PDO("mysql:host=localhost;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
     }
 
-function loadUserById(int $id): ?USUARIOS
-    {
-        $stmt = $this->conexao->prepare("SELECT id, nome, email, senha FROM USUARIOS WHERE id = :id");
-        $stmt->bindValue(":id", $id);
-        $stmt->execute();
 
-        $usuario = $stmt->fetchObject(USUARIOS::class);
-        if ($usuario && password_verify($senha, $usuario->senha)) {
-            return $usuario;
-        }
+    function loadUserById(int $id): ?USUARIOS
+{
+    $stmt = $this->conexao->prepare("SELECT id, nome, email, senha FROM USUARIOS WHERE id = :id"); //crie uma query para procurar o id
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT); //substitui o valor 
+    $stmt->execute(); //executa
 
-        return null;
+    $usuario = $stmt->fetchObject(USUARIOS::class); //transforma o resultado da consulta em um objeto da classe USUARIOS com os dados do banco
+
+    if ($usuario) { //se existir o usuário retorna o usuário
+        return $usuario;
     }
+
+    return null;
+}
 }

@@ -17,5 +17,15 @@ class Principal
     {
         echo $this->ambiente->render("inicio.html");
     }
+
+    public function login()
+    {
+        echo $this->ambiente->render("teste.html");
+        
+    }
+    public function loginDuo()
+    {
+        echo $this->ambiente->render("teste.html");
+    }
 }
 ?>
