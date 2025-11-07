@@ -1,10 +1,10 @@
 <?php
 
-namespace Concessionaria\Projetob\Controller;
+namespace Concessionaria\Projetob\Model;
 
 class Cargo
 {
-public int $idcargo;
-public string $nomecargo;
-public string $departamento;
+    public int $idcargo;
+    public string $nomecargo;
+    public string $departamento;
 }
