@@ -1,9 +1,8 @@
-<?
+<?php
+namespace Concessionaria\Projetob\Model;
 
 class Revisao
 {
-
-
     public int $ID_REVISAO;
     public string $DATA_REVISAO;
     public string $DATA_AGENDAMENTO;

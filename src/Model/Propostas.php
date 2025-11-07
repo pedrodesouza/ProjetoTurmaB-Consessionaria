@@ -1,7 +1,7 @@
-<?
+<?php
+namespace Concessionaria\Projetob\Model;
 
 class Propostas
-
 {
     public int $id;
     public int $veiculo_id;

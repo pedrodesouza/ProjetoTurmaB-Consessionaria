@@ -1,4 +1,5 @@
 <?php
+namespace Concessionaria\Projetob\Model;
 
 class Veiculos
 {
