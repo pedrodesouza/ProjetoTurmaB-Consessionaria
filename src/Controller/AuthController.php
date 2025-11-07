@@ -88,9 +88,10 @@
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if($usuario && password_verify($senha, $usuario['senha'])){
-            echo "Senha válida.";
             session_start();
+            header("Location: http://localhost/ProjetoTurmaB-Consessionaria/");
             $_SESSION["user_id"] = $usuario['id'];
+            exit;
         } else {
             echo "Senha inválida.";
             return;
