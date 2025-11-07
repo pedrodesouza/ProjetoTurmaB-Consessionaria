@@ -3,7 +3,7 @@ namespace Concessionaria\Projetob\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-
+//feito por paulo henrique de oliveira benedicto
 class VeiculosController
 {
     private Environment $ambiente;
@@ -28,7 +28,7 @@ class VeiculosController
                 'cambio' => 'Automático',
                 'final_placa' => '0',
                 'descricao' => 'Veículo 0km, completo com todos opcionais de fábrica.',
-                'imagem' => 'assets/img/gatitoteste.jpeg'
+                'imagem' => 'toyotacorolla.jpeg'
             ]
         ];
     }
