@@ -19,46 +19,17 @@
     <h1>Detalhes do Veículo</h1>
     <form>
         <div>
-            <label for="marca">Marca:</label>
-            <input type="text" id="marca" name="marca" value="{{ veiculo.marca }}" readonly>
-        </div>
-        <div>
-            <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo" name="modelo" value="{{ veiculo.modelo }}" readonly>
-        </div>
-        <div>
-            <label for="ano">Ano:</label>
-            <input type="text" id="ano" name="ano" value="{{ veiculo.ano }}" readonly>
-        </div>
-        <div>
-            <label for="preco">Preço:</label>
-            <input type="text" id="preco" name="preco" value="R$ {{ veiculo.preco }}" readonly>
-        </div>
-        <div>
-            <label for="quilometragem">Quilometragem:</label>
-            <input type="text" id="quilometragem" name="quilometragem"
-                value="{{ veiculo.quilometragem|number_format(0, '', '.') }} km" readonly>
-        </div>
-        <div>
-            <label for="combustivel">Combustível:</label>
-            <input type="text" id="combustivel" name="combustivel" value="{{ veiculo.combustivel }}" readonly>
-        </div>
-        <div>
-            <label for="cor">Cor:</label>
-            <input type="text" id="cor" name="cor" value="{{ veiculo.cor }}" readonly>
-        </div>
-        <div>
-            <label for="cambio">Câmbio:</label>
-            <input type="text" id="cambio" name="cambio" value="{{ veiculo.cambio }}" readonly>
-        </div>
-        <div>
-            <label for="final_placa">Final da Placa:</label>
-            <input type="text" id="final_placa" name="final_placa" value="{{ veiculo.final_placa }}" readonly>
-        </div>
-        <div>
-            <label for="descricao">Descrição:</label>
-            <textarea id="descricao" name="descricao" readonly
-                style="width: 100%; height: 50px;">{{ veiculo.descricao }}</textarea>
+            <img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{veiculo.imagem}}" alt="Foto">
+            <p id="marca" name="marca">Marca: {{ veiculo.marca }}</p>
+            <p id="modelo" name="modelo">Modelo: {{ veiculo.modelo }}</p>
+            <p id="ano" name="ano">Ano: {{ veiculo.ano }}</p>
+            <p id="preco" name="preco">R$ {{ veiculo.preco|number_format(2, ',', '.') }}</p>
+            <p id="quilometragem" name="quilometragem">{{ veiculo.quilometragem }} km</p>
+            <p id="combustivel" name="combustivel">Tipo de combustível:{{ veiculo.combustivel }}</p>
+            <p id="cor" name="cor">Cor: {{ veiculo.cor }}</p>
+            <p id="cambio" name="cambio">Cambio: {{ veiculo.cambio }}</p>
+            <p id="finalPlaca" name="finalPlaca">Final da placa: {{ veiculo.final_placa }}</p>
+            <p id="descricao" name="descricao">Descrição: {{ veiculo.descricao }}</p>
         </div>
     </form>
 </body>
