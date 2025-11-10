@@ -8,8 +8,8 @@ class Database{
     private static ?PDO $conexao = null;
     private static string $host = "localhost";
     private static string $dbname = "PRJ2DS";
-    private static string $usuario = "Aluno2DS";
-    private static string $senha = "SenhaBD2";
+    private static string $usuario = "root";
+    private static string $senha = "";
     private static string $charset = "utf8mb4";
 
     public static function getConexao(): PDO

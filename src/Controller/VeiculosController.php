@@ -3,52 +3,35 @@ namespace Concessionaria\Projetob\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-//feito por paulo henrique de oliveira benedicto
+use Concessionaria\Projetob\Model\Veiculos;
+
+//feito por paulo henrique de oliveira benedicto e lucas sousa
 class VeiculosController
 {
     private Environment $ambiente;
-    private array $veiculos;
+    private Veiculos $veiculosDados;
 
     public function __construct()
     {
         $loader = new FilesystemLoader(__DIR__ . '/../View');
         $this->ambiente = new Environment($loader);
-
-        //dados pre definidos para teste
-        $this->veiculos = [
-            1 => [
-                'id' => 1,
-                'marca' => 'Toyota',
-                'modelo' => 'Corolla',
-                'ano' => 2023,
-                'preco' => 120000.00,
-                'quilometragem' => 0,
-                'combustivel' => 'Flex',
-                'cor' => 'Preto',
-                'cambio' => 'Automático',
-                'final_placa' => '0',
-                'descricao' => 'Veículo 0km, completo com todos opcionais de fábrica.',
-                'imagem' => 'toyotacorolla.jpeg'
-            ]
-        ];
-    }
-
-    private function buscarVeiculoPorId(int $id): ?array
-    {
-        return $this->veiculos[$id] ?? null;
+        
+        $this->veiculosDados = new Veiculos();
     }
 
     public function detalhes($data)
     {
         $id = (int) $data['id'];
-        $veiculo = $this->buscarVeiculoPorId($id);
+        $veiculo = $this->veiculosDados->veiculosDetalhes($id);
 
         if (!$veiculo) {
             //se o veículo não for encontrado, redireciona para a página principal
             header("Location: /");
             exit;
         }
-
-        echo $this->ambiente->render("veiculos/detalhes.html", ['veiculo' => $veiculo]);
+        // se tiver a galeria de imagens no banco de dados, vai ser usada nos detalhes do veículo
+        $galeria = $this->veiculosDados->galeriaImagens($id);
+        
+        echo $this->ambiente->render("veiculos/detalhes.html", ['veiculo' => $veiculo, 'galeria' => $galeria]);
     }
 }

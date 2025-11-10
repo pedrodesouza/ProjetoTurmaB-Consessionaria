@@ -11,8 +11,8 @@
     private \Twig\Loader\FilesystemLoader $carregador;
     private \PDO $conexao;
 
-     public function __construct()
-     {
+    public function __construct()
+    {
         $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View/auth");
  
         $this->ambiente = new \Twig\Environment($this->carregador);

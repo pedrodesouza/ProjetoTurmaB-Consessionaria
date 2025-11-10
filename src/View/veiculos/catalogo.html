@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Veículos - Concessionária</title>
+</head>
+    <h1>Catalogo</h1>
+
+    {% for v in veiculos %}
+        <div class="item">
+            <img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}" alt="{{ v.modelo }}">
+            <p>{{ v.marca }} {{ v.modelo }} {{ v.cor }}</p>
+            <a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}"><button>Ver detalhes</button></a>
+        </div>
+    {% endfor %}    
+    
+</body>
+</html>
