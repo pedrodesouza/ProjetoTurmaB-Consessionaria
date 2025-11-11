@@ -23,6 +23,19 @@
 
 <body>
         <h1>Detalhes do Veículo</h1>
+    <!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
+        <form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
+            <input type="text" name="q" id="barraPesquisa" placeholder="Pesquisar marca, modelo, cor...">
+            <button>Pesquisar</button>
+            {% if pesquisa is defined %}
+                <p>Resultados para: "{{ pesquisa }}"</p>
+            {% endif %} 
+            {% if pesquisa is defined and veiculos is empty %}
+                <p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
+            {% endif %}
+        </form>
+    <!-- fim do modelo -->
+
     {% if galeria is not empty %}
         <div class="galeria" id="galeria" data-imagens="{% for img in galeria %}{{ img }}{% if not loop.last %},{% endif %}{% endfor %}">
             <button class="seta" onclick="anterior()">&lt;</button>

@@ -34,4 +34,21 @@ class VeiculosController
         
         echo $this->ambiente->render("veiculos/detalhes.html", ['veiculo' => $veiculo, 'galeria' => $galeria]);
     }
+
+    public function pesquisar($data)
+    {
+        $termo = $_GET['q'] ?? '';
+
+        if (empty($termo)) {
+            header("Location: /veiculos");
+            exit;
+        }
+
+        $veiculos = $this->veiculosDados->buscarVeiculos($termo);
+
+        echo $this->ambiente->render("veiculos/catalogo.html", [
+            'veiculos' => $veiculos,
+            'pesquisa' => $termo
+        ]);
+    }
 }

@@ -21,5 +21,6 @@ $roteador -> post("/proposta", "PropostaController:enviar");
 $roteador->group("/veiculos");
 $roteador->get("/", "Principal:catalogo");
 $roteador->get("/{id}", "VeiculosController:detalhes");
+$roteador->get("/pesquisar", "VeiculosController:pesquisar");
 
 $roteador->dispatch();

@@ -9,13 +9,38 @@ class Veiculos
     public string $imagem;
     public string $marca;
     public string $modelo;
-    public string $descricao;
-    public int $ano;
+    public ?string $descricao;
+    public ?int $ano;
     public string $cor;
     private \PDO $conexao;
 
     public function __construct(){
         $this->conexao = Database::getConexao();
+    }
+
+    public function buscarVeiculos(string $termo): array
+    {
+        $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE marca LIKE :termo OR modelo LIKE :termo OR cor LIKE :termo OR descricao LIKE :termo");
+        $stmt->bindValue(':termo', "%$termo%");
+        $stmt->execute();
+
+        $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $listaVeiculos = [];
+
+        foreach ($dados as $item) {
+            $veiculo = new Veiculos();
+            $veiculo->id = $item['id'];
+            $veiculo->imagem = $item['imagem'];
+            $veiculo->marca = $item['marca'];
+            $veiculo->modelo = $item['modelo'];
+            $veiculo->descricao = $item['descricao'];
+            $veiculo->ano = $item['ano'];
+            $veiculo->cor = $item['cor'];
+
+            $listaVeiculos[] = $veiculo;
+        }
+
+        return $listaVeiculos;
     }
 
     public function veiculosSelectAll(): array
