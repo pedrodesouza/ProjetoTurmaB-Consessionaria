@@ -1,6 +1,5 @@
 <?php
 namespace Concessionaria\Projetob\Model;
-use PDO;
 
 class Usuario
 {
