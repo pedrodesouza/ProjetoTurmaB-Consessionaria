@@ -11,8 +11,8 @@
     private \Twig\Loader\FilesystemLoader $carregador;
     private \PDO $conexao;
 
-     public function __construct()
-     {
+    public function __construct()
+    {
         $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View/auth");
  
         $this->ambiente = new \Twig\Environment($this->carregador);
@@ -38,7 +38,7 @@
         return;
     }
 
-    $conexao = new \PDO("mysql:host=localhost;dbname=PRJ2DS", "Aluno2DS", "SenhaBD2");
+    $conexao = new PDO("mysql:host=localhost;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
 
     $user = new Usuario($conexao);
 
@@ -73,7 +73,7 @@
         }
 
         try {
-            $this->conexao = new \PDO("mysql:host=localhost;dbname=PRJ2DS", "Aluno2DS", "SenhaBD2");
+            $this->conexao = new \PDO("mysql:host=localhost;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
             $this->conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             echo "Erro ao conectar ao banco de dados.";
@@ -81,7 +81,7 @@
         }
 
 
-        $stmt = $this->conexao->prepare("SELECT id, senha FROM usuarios WHERE email = :email");
+        $stmt = $this->conexao->prepare("SELECT id, senha FROM USUARIOS WHERE email = :email");
         $stmt->bindValue(":email", $email);
         $stmt->execute();
 

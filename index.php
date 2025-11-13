@@ -7,18 +7,20 @@ $roteador = new CoffeeCode\Router\Router(URL);
 $roteador->namespace("Concessionaria\Projetob\Controller");
 
 // rota principal
-$roteador -> group(null);
-$roteador -> get("/", "Principal:inicio");
-$roteador -> get("/veiculos", "Principal:veiculos");
-$roteador -> get("/register", "AuthController:showRegisterForm");
-$roteador -> post("/register", "AuthController:register");
-$roteador -> get("/login", "AuthController:showLoginForm");
-$roteador -> post("/login", "AuthController:login");
-$roteador -> post("/", "AuthController:Logout");
-$roteador -> get("/proposta", "PropostaController:inicio");
-$roteador -> post("/proposta", "PropostaController:enviar");
+$roteador->group(null);
+$roteador->get("/", "Principal:inicio");
+$roteador->get("/register", "AuthController:showRegisterForm");
+$roteador->post("/register", "AuthController:register");
+$roteador->get("/login", "AuthController:showLoginForm");
+$roteador->post("/login", "AuthController:login");
+$roteador->post("/", "AuthController:Logout");
+$roteador->get("/proposta", "PropostaController:inicio");
+$roteador->post("/proposta", "PropostaController:enviar");
 
 // rota para detalhes do veículo
-$roteador->get("/veiculos/{id}", "VeiculosController:detalhes");
+$roteador->group("/veiculos");
+$roteador->get("/", "Principal:catalogo");
+$roteador->get("/{id}", "VeiculosController:detalhes");
+$roteador->get("/pesquisar", "VeiculosController:pesquisar");
 
 $roteador->dispatch();
