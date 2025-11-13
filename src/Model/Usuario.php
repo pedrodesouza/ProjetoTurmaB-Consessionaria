@@ -18,7 +18,7 @@ class Usuario
 
     public function existeEmail(string $email): bool
     {
-        $stmt = $this->conexao->prepare("SELECT id FROM usuarios WHERE email = :email");
+        $stmt = $this->conexao->prepare("SELECT id FROM USUARIOS WHERE email = :email");
         $stmt->bindValue(":email", $email);
         $stmt->execute();
 
