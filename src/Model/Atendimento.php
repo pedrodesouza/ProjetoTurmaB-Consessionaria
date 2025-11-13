@@ -1,11 +1,11 @@
 <?php
 
-namespace Concessionaria\Projetob\Controller;
+namespace Concessionaria\Projetob\Model;
 
 class Atendimento
 {
-public int $idatendimento;
-public int $dtatendimento;
-public int $cliatendimento;
-public int $idatend;
+    public int $idatendimento;
+    public int $dtatendimento;
+    public int $cliatendimento;
+    public int $idatend;
 }

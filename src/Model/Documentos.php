@@ -1,5 +1,7 @@
 <?php
 
+namespace Concessionaria\Projetob\Model;
+
 Class Documentos
 {   
     public string $CPF;
@@ -14,5 +16,4 @@ Class Documentos
     public string $IPVA;
     public string $statusIPVA;
     
-
 }
