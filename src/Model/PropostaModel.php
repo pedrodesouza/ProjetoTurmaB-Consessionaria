@@ -1,22 +1,20 @@
 <?php
-namespace Concessionaria\Projetob\Model\Proposta;
+namespace Concessionaria\Projetob\Model;
 
 class PropostaModel
 {
-    public function salvarProposta(){
-    $oCon = new PDO('mysql:host=localhost; dbname=PRJ2DSB', 'Aluno2DS', 'SenhaBD2');
+    public function salvarProposta(Proposta $proposta)
+    {
+        $oCon = new \PDO('mysql:host=localhost; dbname=PRJ2DSB', 'Aluno2DS', 'SenhaBD2');
 
-// id é um placeholder e deve ser alterado para pegar o id do usuario
-    $id = 1;
-    $data = date("d/m/Y");
-// valor é um placeholder e deve ser alterado para pegar o valor do item do carrinho
-    $valor = 100;
-// id do item do carrinho, placeholder dnv
-    $id_item = 1;
+        $cSQL = $this->$oCon->prepare("INSERT INTO PROPOSTAS(VEICULO_ID, NOME_CLIENTE, EMAIL_CLIENTE, TIPO, DATA_PROPOSTA) VALUES(:veiculo, :nome, :email, :tipo, :data_proposta)");
 
-    $cSQL = "INSERT INTO PEDIDOS(id_pedido, id_cliente, data_venda, valor_pedido, id_itpd) VALUES(1, $id, $data, $valor, $id_item)";
-    $oCon->exec($cSQL);
-    
+        $cSQL->bindValue(":veiculo", $proposta->veiculo_id);
+        $cSQL->bindValue(":nome", $proposta->nome_cliente);
+        $cSQL->bindValue(":email", $proposta->email_cliente);
+        $cSQL->bindValue(":tipo", $proposta->tipo);
+        $cSQL->bindValue(":data", $proposta->data_proposta);
+
+        $oCon->exec($cSQL); 
     }
-
 }
