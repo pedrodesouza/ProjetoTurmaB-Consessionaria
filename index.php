@@ -11,7 +11,9 @@ $roteador->group(null);
 $roteador->get("/", "Principal:inicio");
 $roteador->get("/proposta", "PropostaController:inicio");
 $roteador->post("/proposta", "PropostaController:enviar");
+$roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 
+$roteador->post("/editar", "VeiculoController:showCreateForm");
 // rota para detalhes do veículo
 $roteador->group("/veiculos");
 $roteador->get("/", "Principal:catalogo");
