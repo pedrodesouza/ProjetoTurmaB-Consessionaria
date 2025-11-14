@@ -3,6 +3,7 @@
     namespace Concessionaria\Projetob\Controller;
     use PDO;
     use Concessionaria\Projetob\Model\Usuario;
+    use Concessionaria\Projetob\Model\Database; 
 
     class AuthController
 {
@@ -14,9 +15,8 @@
     public function __construct()
     {
         $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View/auth");
- 
         $this->ambiente = new \Twig\Environment($this->carregador);
-
+        $this->conexao = Database::getConexao();
      }  
 
     public function showRegisterForm(){
@@ -38,9 +38,8 @@
         return;
     }
 
-    $conexao = new PDO("mysql:host=192.168.0.12;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
 
-    $user = new Usuario($conexao);
+    $user = new Usuario($this->conexao);
 
     if ($user->existeEmail($email)) {
         header("Location: /ProjetoTurmaB-Consessionaria/register");

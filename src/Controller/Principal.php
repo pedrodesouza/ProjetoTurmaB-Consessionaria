@@ -18,7 +18,9 @@ class Principal
 
      public function inicio()
     {
-        echo $this->ambiente->render("inicio.html");
+        $listaVeiculos = $this->veiculosDados->veiculosSelectAll();
+        
+        echo $this->ambiente->render("inicio.html", ['veiculos' => $listaVeiculos]);
     }
 
      public function catalogo()
@@ -27,6 +29,7 @@ class Principal
 
         echo $this->ambiente->render("veiculos/catalogo.html", ['veiculos' => $listaVeiculos]);
     }
+    
     public function login()
     {
         echo $this->ambiente->render("teste.html");

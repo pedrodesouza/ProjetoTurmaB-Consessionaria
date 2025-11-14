@@ -1,5 +1,7 @@
 <?php
 namespace Concessionaria\Projetob\Model;
+use Concessionaria\Projetob\Model\Database;
+use PDO;
 
 class Usuario
 {
@@ -12,7 +14,7 @@ class Usuario
     private \PDO $conexao;
 
     public function __construct(PDO $conexao){
-        $this->conexao = $conexao;
+        $this->conexao = Database::getConexao();
     }
 
     public function existeEmail(string $email): bool
