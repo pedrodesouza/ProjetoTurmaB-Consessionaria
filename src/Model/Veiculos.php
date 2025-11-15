@@ -12,6 +12,8 @@ class Veiculos
     public ?string $descricao;
     public ?int $ano;
     public string $cor;
+    public ?float $preco;
+    public ?int $quilometragem;
     private \PDO $conexao;
 
     public function __construct(){
@@ -104,7 +106,7 @@ class Veiculos
 
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-    //codigo abaixo é para criar e testar a tabela de galeria de imagens no banco de dados
+    //codigo abaixo é para criar e testar a tabela de galeria de imagens no banco de dados (tem que criar a tabela veiculos antes de criar essa tabela)
     /* CREATE TABLE veiculos_imagens (
     id_imagem INT AUTO_INCREMENT PRIMARY KEY,
     id INT NOT NULL,
