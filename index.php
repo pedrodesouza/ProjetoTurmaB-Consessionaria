@@ -11,7 +11,11 @@ $roteador->group(null);
 $roteador->get("/", "Principal:inicio");
 $roteador->get("/proposta", "PropostaController:inicio");
 $roteador->post("/proposta", "PropostaController:enviar");
-
+// rotas de autenticação
+$roteador->get("/login", "AuthController:showLoginForm");
+$roteador->post("/login", "AuthController:login");
+$roteador->get("/register", "AuthController:showRegisterForm");
+$roteador->post("/register", "AuthController:register");
 // rota para detalhes do veículo
 $roteador->group("/veiculos");
 $roteador->get("/", "Principal:catalogo");

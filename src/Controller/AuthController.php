@@ -17,7 +17,7 @@
         $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View/auth");
         $this->ambiente = new \Twig\Environment($this->carregador);
         $this->conexao = Database::getConexao();
-     }  
+    }
 
     public function showRegisterForm(){
        echo $this->ambiente->render("register.html");
@@ -28,35 +28,35 @@
         $email = $_POST['Email_Usuario'] ?? '';
         $senha = $_POST['Senha_Usuario'] ?? '';
 
-    if (empty($nome) || empty($email) || empty($senha)) {
-        echo "Preencha todos os campos.";
-        return;
+        if (empty($nome) || empty($email) || empty($senha)) {
+            echo "Preencha todos os campos.";
+            return;
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "E-mail inválido.";
+            return;
+        }
+
+
+        $user = new Usuario($this->conexao);
+
+        if ($user->existeEmail($email)) {
+            header("Location: /ProjetoTurmaB-Consessionaria/register");
+            return;
+        }
+
+        if ($user->criar($nome, $email, $senha)) {
+            header("Location: /ProjetoTurmaB-Consessionaria/");
+        } else {
+            echo "Erro ao cadastrar usuário.";
+        }
     }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "E-mail inválido.";
-        return;
-    }
-
-
-    $user = new Usuario($this->conexao);
-
-    if ($user->existeEmail($email)) {
-        header("Location: /ProjetoTurmaB-Consessionaria/register");
-        return;
-    }
-
-    if ($user->criar($nome, $email, $senha)) {
-        header("Location: /ProjetoTurmaB-Consessionaria/");
-    } else {
-        echo "Erro ao cadastrar usuário.";
-    }
-}
 
     public function showLoginForm(){
        echo $this->ambiente->render("login.html");
     }
-
+    
     public function login(){
         $email = $_POST['Email_Usuario'] ?? '';
         $senha = trim($_POST['Senha_Usuario'] ?? '');
