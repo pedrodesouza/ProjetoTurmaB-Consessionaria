@@ -10,10 +10,9 @@ class Usuario
     public string $email;
     public string $senha;
     public int $role;
-
     private \PDO $conexao;
 
-    public function __construct(PDO $conexao){
+    public function __construct(){
         $this->conexao = Database::getConexao();
     }
 

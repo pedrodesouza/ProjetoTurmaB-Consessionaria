@@ -1,6 +1,7 @@
 <?php
-namespace Concessionaria\Projetob\Controller;
-use Concessionaria\Projetob\Model\Veiculos;
+    namespace Concessionaria\Projetob\Controller;
+    use Concessionaria\Projetob\Model\Veiculos;
+    use Concessionaria\Projetob\Model\Database;
 
 class Principal
 {
@@ -18,21 +19,28 @@ class Principal
 
      public function inicio()
     {
+        session_start();
+        $usuario = null;
+
+        if (isset($_SESSION["user_id"])) {
+            $usuario = Database::loadUserById($_SESSION["user_id"]);
+        }
         $listaVeiculos = $this->veiculosDados->veiculosSelectAll();
         
-        echo $this->ambiente->render("inicio.html", ['veiculos' => $listaVeiculos]);
+        echo $this->ambiente->render("inicio.html", ['usuario' => $usuario, 'veiculos' => $listaVeiculos]);
     }
 
      public function catalogo()
     {
+        session_start();
+        $usuario = null;
+
+        if (isset($_SESSION["user_id"])) {
+            $usuario = Database::loadUserById($_SESSION["user_id"]);
+        }
         $listaVeiculos = $this->veiculosDados->veiculosSelectAll();
 
-        echo $this->ambiente->render("veiculos/catalogo.html", ['veiculos' => $listaVeiculos]);
-    }
-
-    public function loginDuo()
-    {
-        echo $this->ambiente->render("teste.html");
+        echo $this->ambiente->render("veiculos/catalogo.html", ['usuario' => $usuario, 'veiculos' => $listaVeiculos]);
     }
 }
 ?>

@@ -38,7 +38,6 @@
             return;
         }
 
-
         $user = new Usuario($this->conexao);
 
         if ($user->existeEmail($email)) {
@@ -71,16 +70,9 @@
             return;
         }
 
-        try {
-            $this->conexao = new \PDO("mysql:host=192.168.0.12;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
-            $this->conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        } catch (\PDOException $e) {
-            echo "Erro ao conectar ao banco de dados.";
-            return;
-        }
+        $this->conexao = Database::getConexao();
 
-
-        $stmt = $this->conexao->prepare("SELECT senha FROM USUARIOS WHERE email = :email");
+        $stmt = $this->conexao->prepare("SELECT id, senha FROM USUARIOS WHERE email = :email");
         $stmt->bindValue(":email", $email);
         $stmt->execute();
 
@@ -98,7 +90,7 @@
         }
     }
 
-    public function Logout(){
+    public function logout(){
         session_start();
         session_destroy();
         header("Location: http://localhost/ProjetoTurmaB-Consessionaria/login");
