@@ -38,9 +38,9 @@
 
     {% if galeria is not empty %}
         <div class="galeria" id="galeria" data-imagens="{% for img in galeria %}{{ img }}{% if not loop.last %},{% endif %}{% endfor %}">
-            <button class="seta" onclick="anterior()">&lt;</button>
+            <button class="setaDetalhes" onclick="anterior()">&lt;</button>
             <img id="foto" src="/ProjetoTurmaB-Consessionaria/public/assets/img/galeriaImagens/{{ galeria[0] }}" alt="{{ veiculo.modelo }}">
-            <button class="seta" onclick="proximo()">&gt;</button>
+            <button class="setaDetalhes" onclick="proximo()">&gt;</button>
         </div>
 
         <script>

@@ -19,7 +19,18 @@ class Veiculos
     public function __construct(){
         $this->conexao = Database::getConexao();
     }
+    public function paginarVeiculo(int $pagina, int $limite): array
+    {
+        $offset = ($pagina - 1) * $limite;
 
+        $stmt = $this->conexao->prepare("SELECT * FROM veiculos LIMIT :offset, :limite");
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     public function buscarVeiculos(string $termo): array
     {
         $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE marca LIKE :termo OR modelo LIKE :termo OR cor LIKE :termo OR descricao LIKE :termo");

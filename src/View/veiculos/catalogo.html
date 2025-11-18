@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Veículos - Concessionária</title>
+    <link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css">
 </head>
     <h1>Catalogo</h1>
     <!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
@@ -26,6 +27,18 @@
             <a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}"><button>Ver detalhes</button></a>
         </div>
     {% endfor %}    
+
+    <div class="botoesPaginacao">
+        <a class="seta" href="?page={{ pagina - 1 }}">
+            &lt;
+        </a>
+
+        <span>{{ pagina }}</span>
+
+        <a class="seta" href="?page={{ pagina + 1 }}">
+            &gt;
+        </a>
+    </div>
     
 </body>
 </html>
