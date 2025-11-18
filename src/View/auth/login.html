@@ -1,248 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login - OUSADIA MOTORS</title>
+		<link
+			rel="stylesheet"
+			href="/ProjetoTurmaB-Consessionaria/public/assets/css/auth.css" />
+		<!-- LINK OBRIGATORIO PARA FUNCIONAR OS PINS-->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+		<!-- favor colocar o css dentro do auth.css -->
+	</head>
+	<body>
+		<!--CABEÇALHO PRINCIPAL (PARTE OBRIGATÓRIA DO SITE)-->
+		<div name="topo">
+			<header id="cabecalho">
+				<h1>Ousadia Motors</h1>
+				<hr />
+				<nav id="menu-container">
+					<ul class="menu">
+						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
+						<li><a href="#">Seminovos</a></li>
+						<li><a href="#">Ofertas</a></li>
+						<li><a href="#">Serviços</a></li>
+						<li><a href="#">Novos</a></li>
+						<li><a href="#">Sobre Nós</a></li>
+					</ul>
+					<div id="icones-direita">
+						<a href="#" id="Agenda" title="Agenda"
+							><i class="fa-solid fa-calendar-days"></i
+						></a>
+						<a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
+						<a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
+						<a href="#" id="carrinho" title="Carrinho"
+							><i class="fa-solid fa-cart-shopping"></i
+						></a>
+					</div>
+				</nav>
+				<hr />
+			</header>
+		</div>
+		<!--FIM DO CABEÇALHO PRINCIPAL-->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN - OUSADIA MOTORS</title>
+		<div id="div_loginhtml">
+			<div name="esquerda">
+				<ul>
+					<li>
+						<a href="#" id="facebook"
+							><i class="fa-brands fa-facebook-f"></i> Entrar com Facebook</a
+						>
+					</li>
+					<li>
+						<a href="#" id="google"
+							><i class="fa-brands fa-google"></i> Entrar com Google</a
+						>
+					</li>
+					<li>
+						<a href="#" id="apple"><i class="fa-brands fa-apple"></i> Entrar com Apple</a>
+					</li>
+				</ul>
+			</div>
 
-    <!-- LINK OBRIGATORIO PARA FUNCIONAR OSS PINS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <style>
-        /*CSS OBRIGATÓRIO DO SITE*/
-        body {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            margin: 0;
-            padding: 0;
-        }
-
-        #cabecalho {
-            color: black;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        #menu-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .menu {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        .menu li a {
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .menu li a:hover {
-            color: #555;
-        }
-
-        #icones-direita {
-            position: absolute;
-            right: 40px;
-            display: flex;
-            gap: 20px;
-        }
-
-        #icones-direita a {
-            color: black;
-            font-size: 20px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        #icones-direita a:hover {
-            color: #555;
-        }
-
-        @media (max-width: 768px) {
-            #icones-direita {
-                right: 15px;
-                gap: 15px;
-            }
-        }
-
-        /* FIM DA PARTE OBRIGATORIA */
-
-        #div_loginhtml {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            height: 80vh;
-        }
-
-        #form_loginhtml {
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-        }
-
-        #form_loginhtml input {
-            margin-bottom: 15px;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        #Enviar_loginhtml {
-            color: black;
-            border: 1px solid black;
-            cursor: pointer;
-            width: 100px;
-            align-self: center;
-        }
-
-        #Enviar_loginhtml:hover {
-            background-color: black;
-            color: white;
-        }
-
-        #facebook,
-        #google,
-        #apple {
-            display: block;
-            width: 250px;
-            padding: 10px;
-            margin-bottom: 15px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        #facebook {
-            background-color: #3b5998;
-            color: white;
-        }
-
-        #facebook:hover {
-            background-color: #2d4373;
-        }
-
-        #google {
-            background-color: white;
-            color: black;
-            border: 1px solid #ccc;
-        }
-
-        #google:hover {
-            background-color: #e0e0e0;
-        }
-
-        #apple {
-            background-color: black;
-            color: white;
-        }
-
-        #apple:hover {
-            background-color: #333333;
-        }
-
-        [name="esquerda"] ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        [name="esquerda"] ul li {
-            margin-bottom: 10px;
-        }
-
-        #form_loginhtml a {
-            color: black;
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        #form_loginhtml a:hover {
-            text-decoration: underline;
-        }
-
-        #facebook i,
-        #google i,
-        #apple i {
-            margin-right: 8px;
-            vertical-align: middle;
-            font-size: 18px;
-        }
-
-        @media (max-width: 768px) {
-            #div_loginhtml {
-                flex-direction: column;
-                height: auto;
-                padding: 40px 0;
-            }
-
-            [name="esquerda"],
-            [name="direita"] {
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <!--CABEÇALHO PRINCIPAL (PARTE OBRIGATÓRIA DO SITE)-->
-    <div name="topo">
-        <header id="cabecalho">
-            <h1>Ousadia Motors</h1>
-            <hr>
-            <nav id="menu-container">
-                <ul class="menu">
-                    <li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
-                    <li><a href="#">Seminovos</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Novos</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                </ul>
-                <div id="icones-direita">
-                    <a href="#" id="Agenda" title="Agenda"><i class="fa-solid fa-calendar-days"></i></a>
-                    <a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
-                    <a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
-                    <a href="#" id="carrinho" title="Carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-            </nav>
-            <hr>
-        </header>
-    </div>
-    <!--FIM DO CABEÇALHO PRINCIPAL-->
-    
-    <div id="div_loginhtml">
-        <div name="esquerda">
-            <ul>
-                <li><a href="#" id="facebook"><i class="fa-brands fa-facebook-f"></i> Entrar com Facebook</a></li>
-                <li><a href="#" id="google"><i class="fa-brands fa-google"></i> Entrar com Google</a></li>
-                <li><a href="#" id="apple"><i class="fa-brands fa-apple"></i> Entrar com Apple</a></li>
-            </ul>
-        </div>
-
-        <div name="direita">
-            <h1>Digite seu Email e Senha</h1>
-            <form action="/ProjetoTurmaB-Consessionaria/login" method="post" id="form_loginhtml">
-                <input name="Email_Usuario" type="email" id="Email_User_loginhtml" placeholder="E-mail" required>
-                <input name="Senha_Usuario" type="password" id="Senha_User_loginhtml" placeholder="Senha" required>
-                <a href="/ProjetoTurmaB-Consessionaria/register">Cadastre-se</a>
-                <input name="EnviarLogin" type="submit" id="Enviar_loginhtml" value="Entrar">
-            </form>
-        </div>
-    </div>
-</body>
-
+			<div name="direita">
+				<h1>Digite seu Email e Senha</h1>
+				<form
+					action="/ProjetoTurmaB-Consessionaria/login"
+					method="post"
+					id="form_loginhtml">
+					<input
+						name="Email_Usuario"
+						type="email"
+						id="Email_User_loginhtml"
+						placeholder="E-mail"
+						required />
+					<input
+						name="Senha_Usuario"
+						type="password"
+						id="Senha_User_loginhtml"
+						placeholder="Senha"
+						required />
+					<a href="/ProjetoTurmaB-Consessionaria/register">Cadastre-se</a>
+					<input name="EnviarLogin" type="submit" id="Enviar_loginhtml" value="Entrar" />
+				</form>
+			</div>
+		</div>
+	</body>
 </html>
