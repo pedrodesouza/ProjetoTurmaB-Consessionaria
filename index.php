@@ -1,8 +1,12 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Load environment variables from .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // endereço do site
-const URL = "http://localhost/ProjetoTurmaB-Consessionaria";
+const URL = $_ENV['APP_URL'];
 $roteador = new CoffeeCode\Router\Router(URL);
 $roteador->namespace("Concessionaria\Projetob\Controller");
 
@@ -24,3 +28,10 @@ $roteador->get("/{id}", "VeiculosController:detalhes");
 $roteador->get("/pesquisar", "VeiculosController:pesquisar");
 
 $roteador->dispatch();
+
+/*
+ * ERRORS
+ */
+if ($roteador->error()) {
+    $roteador->redirect("/ops/{$roteador->error()}");
+}

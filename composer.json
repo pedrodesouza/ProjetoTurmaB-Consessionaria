@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "twig/twig": "3.19.0",
-        "coffeecode/router": "dev-master"
+        "coffeecode/router": "dev-master",
+        "vlucas/phpdotenv": "^5.6@dev"
     },
     "license": "proprietary",
     "autoload": {

@@ -16,10 +16,10 @@ class Database
     private static string $senha = "SenhaBD2";*/
 
     // Configurações de ambiente local (para usar em casa)
-    private static string $host = "localhost";
-    private static string $dbname = "PRJ2DSB";
-    private static string $usuario = "root";
-    private static string $senha = "";
+    private static string $host = $_ENV['DB_HOST'];
+    private static string $dbname = $_ENV['DB_NAME'];
+    private static string $usuario = $_ENV['DB_USER'];
+    private static string $senha = $_ENV['DB_PASS'];
 
     public static function getConexao(): PDO
     {
@@ -43,40 +43,4 @@ class Database
         return self::$conexao;
     }
 
-    public static function loadUserById(int $id): ?Usuario
-    {
-        $stmt = self::getConexao()->prepare("SELECT id, nome, email, senha FROM USUARIOS WHERE id = :id"); //crie uma query para procurar o id
-        $stmt->bindValue(":id", $id, PDO::PARAM_INT); //substitui o valor do id na query
-        $stmt->execute(); //executa
-
-        $usuario = $stmt->fetchObject(Usuario::class); //transforma o resultado da consulta em um objeto da classe Usuario com os dados do banco
-
-        if ($usuario) { //se existir o usuário retorna o usuário
-            return $usuario;
-        }
-
-        return null;
-    }
-
-    public static function existeEmail(string $email): bool
-    {
-        $stmt = self::getConexao()->prepare("SELECT id FROM usuarios WHERE email = :email");
-        $stmt->bindValue(":email", $email);
-        $stmt->execute();
-
-        return $stmt->rowCount() > 0;
-    }
-
-    public static function criar(string $nome, string $email, string $senha): bool
-    {
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-        $stmt = self::getConexao()->prepare(
-            "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)"
-        );
-        $stmt->bindValue(":nome", $nome);
-        $stmt->bindValue(":email", $email);
-        $stmt->bindValue(":senha", $senhaHash);
-
-        return $stmt->execute();
-    }
 }
