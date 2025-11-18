@@ -25,9 +25,13 @@ class Principal
         if (isset($_SESSION["user_id"])) {
             $usuario = Database::loadUserById($_SESSION["user_id"]);
         }
-        $listaVeiculos = $this->veiculosDados->veiculosSelectAll();
+        $pagina = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            if ($pagina < 1) $pagina = 1;
+
+        $limite = 20;
+        $veiculos = $this->veiculosDados->paginarVeiculo($pagina, $limite);
         
-        echo $this->ambiente->render("inicio.html", ['usuario' => $usuario, 'veiculos' => $listaVeiculos]);
+        echo $this->ambiente->render("inicio.html", ['usuario' => $usuario, 'veiculos' => $veiculos, 'pagina' => $pagina]);
     }
 
     public function catalogo()
@@ -43,7 +47,6 @@ class Principal
 
         $limite = 20;
         $veiculos = $this->veiculosDados->paginarVeiculo($pagina, $limite);
-        $listaVeiculos = $this->veiculosDados->veiculosSelectAll();
 
         echo $this->ambiente->render("veiculos/catalogo.html", ['usuario' => $usuario, 'veiculos' => $veiculos, 'pagina' => $pagina]);
     }

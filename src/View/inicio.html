@@ -22,6 +22,7 @@
 						<li><a href="#">Serviços</a></li>
 						<li><a href="#">Novos</a></li>
 						<li><a href="#">Sobre Nós</a></li>
+                        <li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
 						{% if usuario is null %}
 						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
@@ -50,10 +51,11 @@
 			</header>
 		</div>
 
-		<main>
+		<main class="mainInicio">
 			{% if usuario is not null %}
 			<li><p class="msgBoasVindas">Bem-vindo, {{ usuario.nome }}!</p></li>
 			{% endif %}
+            <!-- barra de pesquisa -->
 			<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
 				<input
 					type="text"
@@ -67,18 +69,39 @@
 				<p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
 				{% endif %}
 			</form>
-			{% for v in veiculos %}
-			<div class="item">
-				<img
-					src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
-					alt="{{ v.modelo }}" />
-				<p>{{ v.marca }} {{ v.modelo }} {{ v.cor }}</p>
-				<a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}"
-					><button>Ver detalhes</button></a
-				>
-			</div>
-			{% endfor %}
+            <!-- -->
+            <!-- veiculos -->
+			<div class="catalogo-container">
+            {% for v in veiculos %}
+                <div class="item-card">
+                    
+                    <div class="item-img-wrapper">
+                        <img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}" alt="{{ v.modelo }}">
+                    </div>
+
+                    <div class="item-info">
+                        <h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+                        <p class="item-subtitulo">{{ v.cor }} • Ano {{ v.ano }}</p>
+
+                        <p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+
+                        <a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
+                            <button class="item-button">Ver detalhes</button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <!-- veiculos -->
 		</main>
+
+        <div class="botoesPaginacao">
+			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
+
+			<span>{{ pagina }}</span>
+
+			<a class="seta" href="?page={{ pagina + 1 }}"> &gt; </a>
+		</div>
 
 		<footer>
 			<p>Ousadia Motors &copy; 2024</p>

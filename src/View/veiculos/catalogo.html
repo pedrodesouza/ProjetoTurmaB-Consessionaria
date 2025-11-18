@@ -10,6 +10,46 @@
 		<!-- favor colocar o css dentro do style.css -->
 	</head>
 	<body>
+        <div name="topo">
+			<header id="cabecalho">
+				<h1>Ousadia Motors</h1>
+				<hr />
+				<nav id="menu-container">
+					<ul class="menu">
+						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
+						<li><a href="#">Seminovos</a></li>
+						<li><a href="#">Ofertas</a></li>
+						<li><a href="#">Serviços</a></li>
+						<li><a href="#">Novos</a></li>
+						<li><a href="#">Sobre Nós</a></li>
+                        <li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
+						{% if usuario is null %}
+						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
+						{% endif %} {% if usuario is not null %}
+						<form
+							id="logout"
+							action="/ProjetoTurmaB-Consessionaria/logout"
+							method="post"
+							style="margin-left: 10px">
+							<input type="submit" value="Sair" />
+						</form>
+						{% endif %}
+					</ul>
+					<div id="icones-direita">
+						<a href="#" id="Agenda" title="Agenda"
+							><i class="fa-solid fa-calendar-days"></i
+						></a>
+						<a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
+						<a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
+						<a href="#" id="carrinho" title="Carrinho"
+							><i class="fa-solid fa-cart-shopping"></i
+						></a>
+					</div>
+				</nav>
+				<hr />
+			</header>
+		</div>
 		<h1>Catalogo</h1>
 		<!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
 		<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
@@ -26,17 +66,31 @@
 			{% endif %}
 		</form>
 		<!-- fim do modelo -->
-		{% for v in veiculos %}
-		<div class="item">
-			<img
-				src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
-				alt="{{ v.modelo }}" />
-			<p>{{ v.marca }} {{ v.modelo }} {{ v.cor }}</p>
-			<a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}"
-				><button>Ver detalhes</button></a
-			>
-		</div>
-		{% endfor %}
+         
+        <!-- veiculos -->
+        <main class="mainCatalogo">
+            <div class="catalogo-container">
+            {% for v in veiculos %}
+                <div class="item-card">
+                    
+                    <div class="item-img-wrapper">
+                        <img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}" alt="{{ v.modelo }}">
+                    </div>
+
+                    <div class="item-info">
+                        <h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+                        <p class="item-subtitulo">{{ v.cor }} • Ano {{ v.ano }}</p>
+
+                        <p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+
+                        <a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
+                            <button class="item-button">Ver detalhes</button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </main>
 
 		<div class="botoesPaginacao">
 			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
