@@ -1,39 +1,107 @@
+
+/* barra de navegação */
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
+#cabecalho {
+	color: black;
+	padding: 10px 0;
+	text-align: center;
+}
+
+#menu-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 20px;
+}
+
+.menu li a {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.menu li a:hover {
+	color: #555;
+}
+
+#icones-direita {
+	position: absolute;
+	right: 40px;
+	display: flex;
+	gap: 20px;
+}
+
+#icones-direita a {
+	color: black;
+	font-size: 20px;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+#icones-direita a:hover {
+	color: #555;
+}
+
+@media (max-width: 768px) {
+	#icones-direita {
+		right: 15px;
+		gap: 15px;
+	}
+}
+#LogECad {
+	display: flex;
+}
+
 /* css geral */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
 }
 
 /* css da pagina de detalhes do veiculo */
-
-.galeria{
-    display: flex;
-    padding: 8px;
-    margin-left: 8px;
+.galeria {
+	display: flex;
+	padding: 8px;
+	margin-left: 8px;
 }
 
 .setaDetalhes {
-    font-size: 24px;
-    padding: 8px 12px;
-    background-color: white;
-    cursor: pointer;
-    align-items: center;
+	font-size: 24px;
+	padding: 8px 12px;
+	background-color: white;
+	cursor: pointer;
+	align-items: center;
 }
 
 /* css do catalogo */
-
 .seta {
-    font-size: 24px;       
-    font-weight: bold;       
-    color: #333;           
-    padding: 5px 10px;       
-    border: 1px solid #ccc; 
-    border-radius: 5px;      
-    text-decoration: none;  
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-decoration: none;
 }
 
 .seta:hover {
-    background: #f0f0f0;
+	background: #f0f0f0;
 }
