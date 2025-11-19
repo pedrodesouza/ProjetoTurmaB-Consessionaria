@@ -16,13 +16,25 @@ class Database
     private static string $senha = "SenhaBD2";*/
 
     // Configurações de ambiente local (para usar em casa)
-    private static string $host = $_ENV['DB_HOST'];
-    private static string $dbname = $_ENV['DB_NAME'];
-    private static string $usuario = $_ENV['DB_USER'];
-    private static string $senha = $_ENV['DB_PASS'];
+    private static string $host = '';
+    private static string $dbname = '';
+    private static string $usuario = '';
+    private static string $senha = '';
+
+    private static function initializeConfig(): void
+    {
+        if (empty(self::$host)) {
+            self::$host = $_ENV['DB_HOST'];
+            self::$dbname = $_ENV['DB_NAME'];
+            self::$usuario = $_ENV['DB_USER'];
+            self::$senha = $_ENV['DB_PASS'];
+        }
+    }
 
     public static function getConexao(): PDO
     {
+        self::initializeConfig();
+
         if (self::$conexao === null) {
 
             $dsn = "mysql:host=" . self::$host .

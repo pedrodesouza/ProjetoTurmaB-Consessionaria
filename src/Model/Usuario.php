@@ -7,7 +7,7 @@ class Usuario
     public string $nome;
     public string $email;
     public string $senha;
-    public int $role;
+    public ?int $role;
 
     public function __construct()
     {
