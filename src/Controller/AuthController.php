@@ -3,6 +3,7 @@
     namespace Concessionaria\Projetob\Controller;
     use PDO;
     use Concessionaria\Projetob\Model\Usuario;
+    use Concessionaria\Projetob\Model\UserRepository;
     use Concessionaria\Projetob\Model\Database; 
 
     class AuthController
@@ -38,7 +39,7 @@
             return;
         }
 
-        $user = new Usuario($this->conexao);
+        $user = new UserRepository($this->conexao);
 
         if ($user->existeEmail($email)) {
             header("Location: /ProjetoTurmaB-Consessionaria/register");

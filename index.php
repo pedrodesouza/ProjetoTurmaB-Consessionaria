@@ -6,8 +6,8 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // endereço do site
-const URL = $_ENV['APP_URL'];
-$roteador = new CoffeeCode\Router\Router(URL);
+$url = $_ENV['APP_URL'];
+$roteador = new CoffeeCode\Router\Router($url);
 $roteador->namespace("Concessionaria\Projetob\Controller");
 
 // rota principal

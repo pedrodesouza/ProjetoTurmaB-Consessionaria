@@ -3,11 +3,15 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Início</title>
+		<title>Início - Ousadia Motors</title>
 		<link
 			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css"/>
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+		<link
+			rel="stylesheet"
+			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
 		<!-- favor colocar o css dentro do style.css -->
+		 
 	</head>
 	<body>
 		<div name="topo">
@@ -15,6 +19,21 @@
 				<h1>Ousadia Motors</h1>
 				<hr />
 				<nav id="menu-container">
+					<!-- barra de pesquisa -->
+					<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
+						<input
+							type="text"
+							name="q"
+							id="barraPesquisa"
+							placeholder="Pesquisar marca, modelo, cor..." />
+						<button class="btnPesquisar">Pesquisar</button>
+						{% if pesquisa is defined %}
+						<p>Resultados para: "{{ pesquisa }}"</p>
+						{% endif %} {% if pesquisa is defined and veiculos is empty %}
+						<p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
+						{% endif %}
+					</form>
+					<!-- -->
 					<ul class="menu">
 						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
 						<li><a href="#">Seminovos</a></li>
@@ -22,7 +41,7 @@
 						<li><a href="#">Serviços</a></li>
 						<li><a href="#">Novos</a></li>
 						<li><a href="#">Sobre Nós</a></li>
-                        <li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
 						{% if usuario is null %}
 						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
@@ -51,51 +70,37 @@
 			</header>
 		</div>
 
+		{% if usuario is not null %}
+		<li><p class="msgBoasVindas">Bem-vindo, {{ usuario.nome }}!</p></li>
+		{% endif %}
 		<main class="mainInicio">
-			{% if usuario is not null %}
-			<li><p class="msgBoasVindas">Bem-vindo, {{ usuario.nome }}!</p></li>
-			{% endif %}
-            <!-- barra de pesquisa -->
-			<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
-				<input
-					type="text"
-					name="q"
-					id="barraPesquisa"
-					placeholder="Pesquisar marca, modelo, cor..." />
-				<button>Pesquisar</button>
-				{% if pesquisa is defined %}
-				<p>Resultados para: "{{ pesquisa }}"</p>
-				{% endif %} {% if pesquisa is defined and veiculos is empty %}
-				<p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
-				{% endif %}
-			</form>
-            <!-- -->
-            <!-- veiculos -->
+			<!-- veiculos -->
 			<div class="catalogo-container">
-            {% for v in veiculos %}
-                <div class="item-card">
-                    
-                    <div class="item-img-wrapper">
-                        <img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}" alt="{{ v.modelo }}">
-                    </div>
+				{% for v in veiculos %}
+				<div class="item-card">
+					<div class="item-img-wrapper">
+						<img
+							src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
 
-                    <div class="item-info">
-                        <h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
-                        <p class="item-subtitulo">{{ v.cor }} • Ano {{ v.ano }}</p>
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
 
-                        <p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
 
-                        <a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
-                            <button class="item-button">Ver detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            {% endfor %}
-            </div>
-            <!-- veiculos -->
+						<a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<!-- veiculos -->
 		</main>
 
-        <div class="botoesPaginacao">
+		<div class="botoesPaginacao">
 			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
 
 			<span>{{ pagina }}</span>
