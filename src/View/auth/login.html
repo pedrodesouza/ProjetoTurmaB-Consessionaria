@@ -62,7 +62,15 @@
 					</li>
 				</ul>
 			</div>
-
+			{% if tipo_msg is defined and tipo_msg %}
+			<div id="popup" class="flash {{ tipo_msg == 'erro' ? 'flash-error' : 'flash-success' }}">
+				{{ msg }}
+			</div>
+			<script>
+					var exbir = document.getElementById('popup');
+					
+			</script>
+		{% endif %}
 			<div name="direita">
 				<h1>Digite seu Email e Senha</h1>
 				<form
