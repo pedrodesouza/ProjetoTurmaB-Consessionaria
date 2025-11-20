@@ -21,10 +21,7 @@
     }
 
     public function showRegisterForm(){
-       if (session_status() === PHP_SESSION_NONE) {
            session_start();
-       }
-
        $tipo_msg = $_SESSION['tipo_msg'] ?? null;
        $msg = $_SESSION['msg'] ?? null;
 
@@ -37,10 +34,7 @@
     }
 
     public function register(){
-        if (session_status() === PHP_SESSION_NONE) {
             session_start();
-        }
-
         $nome = trim($_POST['Nome_Usuario'] ?? '');
         $email = trim($_POST['Email_Usuario'] ?? '');
         $senha = $_POST['Senha_Usuario'] ?? '';
@@ -80,7 +74,7 @@
         if ($user->criar($nome, $email, $senha)) {
             $_SESSION['tipo_msg'] = 'sucesso';
             $_SESSION['msg'] = 'Cadastro concluído com sucesso.';
-            header('Location: /ProjetoTurmaB-Consessionaria/');
+            header('Location: /ProjetoTurmaB-Consessionaria/login');
             exit;
         } else {
             echo $this->ambiente->render('register.html', [
@@ -93,21 +87,36 @@
     }
 
     public function showLoginForm(){
-       echo $this->ambiente->render("login.html");
+           session_start();
+       $tipo_msg = $_SESSION['tipo_msg'] ?? null;
+       $msg = $_SESSION['msg'] ?? null;
+
+       unset($_SESSION['tipo_msg'], $_SESSION['msg']);
+
+       echo $this->ambiente->render("login.html", [
+           'tipo_msg' => $tipo_msg,
+           'msg' => $msg,
+       ]);
     }
     
     public function login(){
+        session_start();
+        
         $email = $_POST['Email_Usuario'] ?? '';
         $senha = trim($_POST['Senha_Usuario'] ?? '');
 
         if (empty($email) || empty($senha)) {
-            echo "Preencha todos os campos.";
-            return;
+            $_SESSION['tipo_msg'] = 'erro';
+            $_SESSION['msg'] = 'Preencha todos os campos.';
+            header('Location: /ProjetoTurmaB-Consessionaria/login');
+            exit();
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "E-mail inválido.";
-            return;
+            $_SESSION['tipo_msg'] = 'erro';
+            $_SESSION['msg'] = 'E-mail inválido.';
+            header('Location: /ProjetoTurmaB-Consessionaria/login');
+            exit();
         }
 
         $this->conexao = Database::getConexao();
@@ -117,17 +126,17 @@
         $stmt->execute();
 
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-        
 
-        if($usuario && password_verify($senha,$usuario['senha'])){
-            session_start();
-            header("Location: http://localhost/ProjetoTurmaB-Consessionaria/");
+        if($usuario && password_verify($senha, $usuario['senha'])){
             $_SESSION["user_id"] = $usuario['id'];
-            exit;
-        } else {
-            echo "Senha inválida.";
-            return;
+            header("Location: /ProjetoTurmaB-Consessionaria/");
+            exit();
         }
+        
+        $_SESSION['tipo_msg'] = 'erro';
+        $_SESSION['msg'] = 'E-mail ou senha inválidos.';
+        header('Location: /ProjetoTurmaB-Consessionaria/login');
+        exit();
     }
 
     public function logout(){
