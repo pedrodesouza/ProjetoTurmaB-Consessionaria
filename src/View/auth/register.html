@@ -65,8 +65,15 @@
 
 			<div name="direita">
 				<h1>Registre-se</h1>
+				
+				{% if tipo_msg %}
+					<div class="alert {{ tipo_msg == 'erro' ? 'alert-danger' : 'alert-success' }}">
+						{{ msg }}
+					</div>
+				{% endif %}
+
 				<form
-					action="/ProjetoTurmaB-Consessionaria/login"
+					action="/ProjetoTurmaB-Consessionaria/register"
 					method="post"
 					id="form_loginhtml">
 					<input
@@ -74,12 +81,14 @@
 						type="text"
 						id="Email_User_loginhtml"
 						placeholder="Nome"
+						value="{{ nome|default('') }}"
 						required />
 					<input
 						name="Email_Usuario"
 						type="email"
 						id="Email_User_loginhtml"
 						placeholder="E-mail"
+						value="{{ email|default('') }}"
 						required />
 					<input
 						name="Senha_Usuario"

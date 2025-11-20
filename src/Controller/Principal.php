@@ -36,7 +36,17 @@ class Principal
         $limite = 20;
         $veiculos = $this->veiculosRepository->paginarVeiculo($pagina, $limite);
 
-        echo $this->ambiente->render("inicio.html", ['usuario' => $usuario, 'veiculos' => $veiculos, 'pagina' => $pagina]);
+        $tipo_msg = $_SESSION['tipo_msg'] ?? null;
+        $msg = $_SESSION['msg'] ?? null;
+        unset($_SESSION['tipo_msg'], $_SESSION['msg']);
+
+        echo $this->ambiente->render("inicio.html", [
+            'usuario' => $usuario,
+            'veiculos' => $veiculos,
+            'pagina' => $pagina,
+            'tipo_msg' => $tipo_msg,
+            'msg' => $msg,
+        ]);
     }
 
     public function catalogo()
