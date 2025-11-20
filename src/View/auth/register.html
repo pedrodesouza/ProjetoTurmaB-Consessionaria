@@ -67,9 +67,12 @@
 				<h1>Registre-se</h1>
 				
 				{% if tipo_msg %}
-					<div class="alert {{ tipo_msg == 'erro' ? 'alert-danger' : 'alert-success' }}">
+					<div id="flash-popup" class="flash {{ tipo_msg == 'erro' ? 'flash-error' : 'flash-success' }}">
 						{{ msg }}
 					</div>
+					<script>
+							var exibir = document.getElementById('flash-popup');
+					</script>
 				{% endif %}
 
 				<form
