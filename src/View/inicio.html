@@ -70,6 +70,17 @@
 			</header>
 		</div>
 
+		{% if tipo_msg is defined and tipo_msg %}
+			<div id="flash-popup" class="flash {{ tipo_msg == 'erro' ? 'flash-error' : 'flash-success' }}">
+				{{ msg }}
+			</div>
+			<script>
+				setTimeout(function(){
+					var el = document.getElementById('flash-popup');
+					});
+			</script>
+		{% endif %}
+
 		{% if usuario is not null %}
 		<li><p class="msgBoasVindas">Bem-vindo, {{ usuario.nome }}!</p></li>
 		{% endif %}

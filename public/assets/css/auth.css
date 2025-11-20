@@ -64,6 +64,22 @@ body {
 }
 
 /*CSS DO REGISTER.HTML*/
+#Enviar_loginhtml:hover {
+	 opacity: 0.95; 
+	}
+
+		
+		.flash {
+			top: 20px;
+			right: 20px;
+			padding: 12px 18px;
+			border-radius: 8px;
+			font-weight: 700;
+		}
+
+		.flash-success { background: #28a745; color: #fff; }
+		.flash-error { background: #dc3545; color: #fff; }
+		
 
 #div_loginhtml {
 	display: flex;

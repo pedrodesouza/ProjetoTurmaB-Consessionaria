@@ -21,35 +21,74 @@
     }
 
     public function showRegisterForm(){
-       echo $this->ambiente->render("register.html");
+       if (session_status() === PHP_SESSION_NONE) {
+           session_start();
+       }
+
+       $tipo_msg = $_SESSION['tipo_msg'] ?? null;
+       $msg = $_SESSION['msg'] ?? null;
+
+       unset($_SESSION['tipo_msg'], $_SESSION['msg']);
+
+       echo $this->ambiente->render("register.html", [
+           'tipo_msg' => $tipo_msg,
+           'msg' => $msg,
+       ]);
     }
 
     public function register(){
-        $nome = $_POST['Nome_Usuario'] ?? '';
-        $email = $_POST['Email_Usuario'] ?? '';
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $nome = trim($_POST['Nome_Usuario'] ?? '');
+        $email = trim($_POST['Email_Usuario'] ?? '');
         $senha = $_POST['Senha_Usuario'] ?? '';
 
         if (empty($nome) || empty($email) || empty($senha)) {
-            echo "Preencha todos os campos.";
+            echo $this->ambiente->render('register.html', [
+                'tipo_msg' => 'erro',
+                'msg' => 'Preencha todos os campos.',
+                'nome' => $nome,
+                'email' => $email,
+            ]);
             return;
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "E-mail inválido.";
+            echo $this->ambiente->render('register.html', [
+                'tipo_msg' => 'erro',
+                'msg' => 'E-mail inválido.',
+                'nome' => $nome,
+                'email' => $email,
+            ]);
             return;
         }
 
         $user = new UserRepository($this->conexao);
 
         if ($user->existeEmail($email)) {
-            header("Location: /ProjetoTurmaB-Consessionaria/register");
+            echo $this->ambiente->render('register.html', [
+                'tipo_msg' => 'erro',
+                'msg' => 'E-mail já cadastrado.',
+                'nome' => $nome,
+                'email' => $email,
+            ]);
             return;
         }
 
         if ($user->criar($nome, $email, $senha)) {
-            header("Location: /ProjetoTurmaB-Consessionaria/");
+            $_SESSION['tipo_msg'] = 'sucesso';
+            $_SESSION['msg'] = 'Cadastro concluído com sucesso.';
+            header('Location: /ProjetoTurmaB-Consessionaria/');
+            exit;
         } else {
-            echo "Erro ao cadastrar usuário.";
+            echo $this->ambiente->render('register.html', [
+                'tipo_msg' => 'erro',
+                'msg' => 'Erro ao cadastrar usuário.',
+                'nome' => $nome,
+                'email' => $email,
+            ]);
         }
     }
 
