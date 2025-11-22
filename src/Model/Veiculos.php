@@ -2,6 +2,11 @@
 namespace Concessionaria\Projetob\Model;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    use Concessionaria\Projetob\Model\Database;
+    use PDO;
+>>>>>>> Stashed changes
 =======
     use Concessionaria\Projetob\Model\Database;
     use PDO;
@@ -21,12 +26,15 @@ namespace Concessionaria\Projetob\Model;
     public ?int $ano;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public string $cor;
     public ?float $preco;
     public ?int $quilometragem;
 }
 
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     public ?string $cor;
@@ -149,6 +157,9 @@ namespace Concessionaria\Projetob\Model;
         */
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

@@ -26,6 +26,11 @@ $roteador->post("/logout", "AuthController:logout");
 $roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+
+
+>>>>>>> Stashed changes
+=======
 
 
 >>>>>>> Stashed changes
