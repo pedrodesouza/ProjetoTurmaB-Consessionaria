@@ -99,7 +99,7 @@ class VeiculosRepository
     {
         $offset = ($pagina - 1) * $limite;
 
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos LIMIT :offset, :limite");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS LIMIT :offset, :limite");
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
