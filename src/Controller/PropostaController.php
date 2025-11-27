@@ -10,7 +10,7 @@ class PropostaController
 
     public function __construct()
     {
-        $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View");
+        $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View/propostas");
 
         $this->ambiente = new \Twig\Environment($this->carregador);
     }
@@ -31,7 +31,10 @@ class PropostaController
 
         $bd = new PropostaModel();
         $bd->salvarProposta($proposta);
-        header("https://formspree.io/f/mbljrnkp");
+
+        $req = curl_init();
+        curl_setopt($req,  CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($req,  CURLOPT_URL, 'https://formspree.io/f/mbljrnkp');
     }
 }
 ?>

@@ -40,7 +40,7 @@ class VeiculosRepository
 
     public function veiculosSelectAll(): array
     {
-        $stmt = $this->conexao->query("SELECT * FROM veiculos");
+        $stmt = $this->conexao->query("SELECT * FROM VEICULOS");
         $listaVeiculos = [];
 
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -62,7 +62,7 @@ class VeiculosRepository
 
     public function veiculosDetalhes(int $id): ?Veiculos
     {
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE id = :id");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS WHERE id = :id");
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -99,10 +99,10 @@ class VeiculosRepository
     {
         $offset = ($pagina - 1) * $limite;
 
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos LIMIT :offset, :limite");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS LIMIT :offset, :limite");
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(); 
 
         $listaVeiculos = [];
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
