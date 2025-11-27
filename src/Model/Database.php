@@ -16,9 +16,9 @@ class Database
     private static string $senha = "SenhaBD2";*/
 
     // Configurações de ambiente local (para usar em casa)
-    private static string $host = '';
-    private static string $dbname = '';
-    private static string $usuario = '';
+    private static string $host = 'localhost';
+    private static string $dbname = 'concessionaria';
+    private static string $usuario = 'root';
     private static string $senha = '';
 
     private static function initializeConfig(): void
