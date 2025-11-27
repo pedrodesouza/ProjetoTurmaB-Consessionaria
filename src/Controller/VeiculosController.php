@@ -4,19 +4,22 @@ namespace Concessionaria\Projetob\Controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Concessionaria\Projetob\Model\Veiculos;
+use Concessionaria\Projetob\Model\VeiculosRepository;
+use Concessionaria\Projetob\Model\Database;
 
 //feito por paulo henrique de oliveira benedicto e lucas sousa
 class VeiculosController
 {
     private Environment $ambiente;
-    private Veiculos $veiculosDados;
+    private VeiculosRepository $veiculosDados;
+    private \PDO $conexao;
 
     public function __construct()
     {
         $loader = new FilesystemLoader(__DIR__ . '/../View');
         $this->ambiente = new Environment($loader);
-        
-        $this->veiculosDados = new Veiculos();
+        $this->conexao = Database::getConexao();
+        $this->veiculosDados = new VeiculosRepository($this->conexao);
     }
 
     public function detalhes($data)

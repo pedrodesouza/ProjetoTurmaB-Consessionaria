@@ -1,0 +1,32 @@
+create table veiculos(
+	id int primary key not null auto_increment,
+    marca varchar(255) NOT NULL,
+    modelo varchar(255) NOT NULL,
+    ano YEAR,
+    preco decimal(10,2),
+    quilometragem int,
+    descricao varchar(500),
+    cor varchar(255) NOT NULL,
+    imagem varchar(255));
+    
+insert into veiculos(marca, modelo, ano, preco, quilometragem, descricao, cor, imagem) values
+('Toyota', 'Corolla', 2015, 129000, 0, 'Toyota de alta qualidade, zero km', 'Preto', 'toyotacorolla.jpeg'),
+('Honda', 'Civic', 2018, 85990.00, 42000, 'Sedã completo, muito conservado.', 'Prata', 'hondacivic.jpg'),
+('Volkswagen', 'Golf GTI', 2017, 119900.00, 55000, 'Versão GTI, esportivo e potente.', 'Branco', 'golfgti.jpg'),
+('Ford', 'Focus', 2014, 49900.00, 87000, 'Completo, ótimo custo-benefício.', 'Cinza', 'fordfocus.jpg'),
+('Chevrolet', 'Onix LTZ', 2020, 68900.00, 31000, 'Econômico e confortável.', 'Vermelho', 'onixltz.jpg'),
+('Hyundai', 'HB20 Comfort', 2019, 57900.00, 29000, 'Ótimo hatch para o dia a dia.', 'Branco', 'hb20.jpg'),
+('Renault', 'Duster', 2016, 55900.00, 78000, 'SUV espaçosa e econômica.', 'Preto', 'renaultduster.jpg'),
+('Fiat', 'Argo Trekking', 2021, 72900.00, 18000, 'Versão aventureira, muito nova.', 'Laranja', 'fiatargo.jpg'),
+('Jeep', 'Renegade Longitude', 2018, 89900.00, 52000, 'SUV moderno, bem equipado.', 'Azul', 'renegade.jpg'),
+('Nissan', 'Kicks SV', 2020, 98900.00, 35000, 'SUV urbano, super econômico.', 'Prata', 'nissankicks.jpg'),
+('Peugeot', '208 Allure', 2017, 49900.00, 69000, 'Hatch confortável e tecnológico.', 'Vermelho', 'peugeot208.jpg'),
+('BMW', '320i Sport', 2015, 129900.00, 82000, 'Sedã premium, excelente desempenho.', 'Preto', 'bmw320i.jpg'),
+('Audi', 'A3 Sedan', 2016, 112900.00, 76000, 'Motor TFSI, luxo e conforto.', 'Branco', 'audia3.jpg'),
+('Mercedes-Benz', 'C180', 2014, 114500.00, 91000, 'Sedã premium muito bem cuidado.', 'Cinza', 'mercedesc180.jpg'),
+('Chevrolet', 'Cruze LTZ', 2019, 88900.00, 40000, 'Conectado, turbo e confortável.', 'Azul', 'cruze.jpg'),
+('Hyundai', 'Tucson', 2013, 39900.00, 120000, 'SUV espaçosa, ótimo custo-benefício.', 'Prata', 'hyundaitucson.jpg'),
+('Toyota', 'Hilux SRV', 2017, 189900.00, 84000, 'Picape 4x4 completa e robusta.', 'Branco', 'hilux.jpg'),
+('Fiat', 'Toro Freedom', 2020, 118900.00, 29000, 'Picape urbana moderna.', 'Cinza', 'fiattoro.jpg'),
+('Volkswagen', 'T-Cross Comfortline', 2021, 124900.00, 17000, 'SUV moderno, super econômico.', 'Preto', 'tcross.jpg'),
+('Renault', 'Kwid Zen', 2022, 47900.00, 9000, 'Compacto econômico, quase zero.', 'Branco', 'kwidzen.jpg');

@@ -1,158 +1,339 @@
-                                        /*CSS DO REGISTER.HTML*/
-
-#body_registerhtml{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    background-image: url(/src/View/img/backgroundSite.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+/* Barra de navegação */
+body {
+	font-family: Arial, sans-serif;
+	background-color: white;
+	margin: 0;
+	padding: 0;
 }
 
-#header_registerhtml{
-    font-size: 190%;
-    color: #7c67d9ff;
-    margin-bottom: -7%;
+#cabecalho {
+	color: black;
+	padding: 10px 0;
+	text-align: center;
 }
 
-#main_registerhtml{
-    width: 75%;
+#menu-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
 
-#form_registerhtml{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-size: 160%;
-    margin-bottom: 6%;
+.menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 20px;
 }
 
-#form_registerhtml label{
-    margin-top: 10%;
-    margin-bottom: 2%;
+.menu li a {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	transition: 0.3s;
 }
 
-#Nome_User_registerhtml{
-    border-radius: 30px;
-    font-size: 95%;
-    width: 98%;
-    height: 5vh;
+.menu li a:hover {
+	color: #555;
 }
 
-#Email_User_registerhtml{
-    border-radius: 30px;
-    font-size: 95%;
-    width: 98%;
-    height: 5vh;
+#icones-direita {
+	position: absolute;
+	right: 40px;
+	display: flex;
+	gap: 20px;
 }
 
-#Senha_User_registerhtml{
-    border-radius: 30px;
-    font-size: 95%;
-    width: 98%;
-    height: 5vh;
+#icones-direita a {
+	color: black;
+	font-size: 20px;
+	text-decoration: none;
+	transition: 0.3s;
 }
 
-#Enviar_registerhtml{
-    border-radius: 27px;
-    color: white;
-    font-size: 123%;
-    width: 100%;
-    height: 6vh;
-    margin-top: 14%;
-    margin-bottom: 6%;
-    cursor: pointer;
-    background-image: url(/src/View/img/backgroundSite.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+#icones-direita a:hover {
+	color: #555;
 }
 
-#div_registerhtml{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 6%;
-    border: solid 2px;
-    border-color: #7c67d9ff;
-    border-radius: 10px;
-    width: 27%;
-        background-color: rgb(255, 255, 255);
+@media (max-width: 768px) {
+	#icones-direita {
+		right: 15px;
+		gap: 15px;
+	}
 }
 
-                                        /*CSS DO LOGIN.HTML*/
+/*CSS DO REGISTER.HTML*/
+#Enviar_loginhtml:hover {
+	 opacity: 0.95; 
+	}
 
-#body_loginhtml{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    background-image: url(/src/View/img/backgroundSite.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+		
+		.flash {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			padding: 16px 24px;
+			border-radius: 8px;
+			animation: slideIn 0.3s ease-in-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(400px);
+				opacity: 0;
+			}
+			to {
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
+
+		.flash-success { 
+			background: #28a745; 
+			color: #fff; 
+		}
+
+		.flash-error { 
+			background: #dc3545; 
+			color: #fff; 
+		}
+		
+
+#div_loginhtml {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 80vh;
 }
 
-#header_loginhtml{
-    font-size: 190%;
-    color: #7c67d9ff;
-    margin-bottom: -7%;
+#form_loginhtml {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
 }
 
-#main_loginhtml{
-    width: 75%;
+#form_loginhtml input {
+	margin-bottom: 15px;
+	padding: 10px;
+	font-size: 16px;
 }
 
-#form_loginhtml{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-size: 160%;
-    margin-bottom: 6%;
+#Enviar_loginhtml {
+	color: black;
+	border: 1px solid black;
+	cursor: pointer;
+	width: 100px;
+	align-self: center;
 }
 
-#form_loginhtml label{
-    margin-top: 10%;
-    margin-bottom: 2%;
+#Enviar_loginhtml:hover {
+	background-color: black;
+	color: white;
 }
 
-#Email_User_loginhtml{
-    border-radius: 30px;
-    font-size: 95%;
-    width: 98%;
-    height: 5vh;
+#facebook,
+#google,
+#apple {
+	display: block;
+	width: 250px;
+	padding: 10px;
+	margin-bottom: 15px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 5px;
+	text-decoration: none;
+	font-weight: bold;
+	transition: 0.3s;
 }
 
-#Senha_User_loginhtml{
-    border-radius: 30px;
-    font-size: 95%;
-    width: 98%;
-    height: 5vh;
+#facebook {
+	background-color: #3b5998;
+	color: white;
 }
 
-#Enviar_loginhtml{
-    border-radius: 27px;
-    color: white;
-    font-size: 123%;
-    width: 100%;
-    height: 6vh;
-    margin-top: 14%;
-    margin-bottom: 6%;
-    cursor: pointer;
-    background-image: url(/src/View/img/backgroundSite.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+#facebook:hover {
+	background-color: #2d4373;
 }
 
-#div_loginhtml{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 9%;
-    border: solid 2px;
-    border-color: #7c67d9ff;
-    border-radius: 10px;
-    width: 27%;
-        background-color: rgb(255, 255, 255);
+#google {
+	background-color: white;
+	color: black;
+	border: 1px solid #ccc;
+}
+
+#google:hover {
+	background-color: #e0e0e0;
+}
+
+#apple {
+	background-color: black;
+	color: white;
+}
+
+#apple:hover {
+	background-color: #333333;
+}
+
+[name="esquerda"] ul {
+	list-style: none;
+	padding: 0;
+}
+
+[name="esquerda"] ul li {
+	margin-bottom: 10px;
+}
+
+#form_loginhtml a {
+	color: black;
+	text-decoration: none;
+	font-size: 14px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+#form_loginhtml a:hover {
+	text-decoration: underline;
+}
+
+#facebook i,
+#google i,
+#apple i {
+	margin-right: 8px;
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+@media (max-width: 768px) {
+	#div_loginhtml {
+		flex-direction: column;
+		height: auto;
+		padding: 40px 0;
+	}
+
+	[name="esquerda"],
+	[name="direita"] {
+		text-align: center;
+	}
+}
+
+/*CSS DO LOGIN.HTML*/
+
+#div_loginhtml {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 80vh;
+}
+
+#form_loginhtml {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+}
+
+#form_loginhtml input {
+	margin-bottom: 15px;
+	padding: 10px;
+	font-size: 16px;
+}
+
+#Enviar_loginhtml {
+	color: black;
+	border: 1px solid black;
+	cursor: pointer;
+	width: 100px;
+	align-self: center;
+}
+
+#Enviar_loginhtml:hover {
+	background-color: black;
+	color: white;
+}
+
+#facebook,
+#google,
+#apple {
+	display: block;
+	width: 250px;
+	padding: 10px;
+	margin-bottom: 15px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 5px;
+	text-decoration: none;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+#facebook {
+	background-color: #3b5998;
+	color: white;
+}
+
+#facebook:hover {
+	background-color: #2d4373;
+}
+
+#google {
+	background-color: white;
+	color: black;
+	border: 1px solid #ccc;
+}
+
+#google:hover {
+	background-color: #e0e0e0;
+}
+
+#apple {
+	background-color: black;
+	color: white;
+}
+
+#apple:hover {
+	background-color: #333333;
+}
+
+[name="esquerda"] ul {
+	list-style: none;
+	padding: 0;
+}
+
+[name="esquerda"] ul li {
+	margin-bottom: 10px;
+}
+
+#form_loginhtml a {
+	color: black;
+	text-decoration: none;
+	font-size: 14px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+#form_loginhtml a:hover {
+	text-decoration: underline;
+}
+
+#facebook i,
+#google i,
+#apple i {
+	margin-right: 8px;
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+@media (max-width: 768px) {
+	#div_loginhtml {
+		flex-direction: column;
+		height: auto;
+		padding: 40px 0;
+	}
+
+	[name="esquerda"],
+	[name="direita"] {
+		text-align: center;
+	}
 }

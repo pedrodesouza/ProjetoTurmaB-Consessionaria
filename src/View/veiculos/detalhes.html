@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{veiculo.marca}} {{veiculo.modelo}} - Detalhes</title>
+		<link
+			rel="stylesheet"
+			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+		<!-- favor colocar o css dentro do style.css -->
+	</head>
+	<body>
+		<h1>Detalhes do Veículo</h1>
+		<!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
+		<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
+			<input
+				type="text"
+				name="q"
+				id="barraPesquisa"
+				placeholder="Pesquisar marca, modelo, cor..." />
+			<button class="btnPesquisar">Pesquisar</button>
+			{% if pesquisa is defined %}
+			<p>Resultados para: "{{ pesquisa }}"</p>
+			{% endif %} {% if pesquisa is defined and veiculos is empty %}
+			<p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
+			{% endif %}
+		</form>
+		<!-- fim do modelo -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{veiculo.marca}} {{veiculo.modelo}} - Detalhes</title>
-    <style>
-        .galeria{
-            display: flex;
-            padding: 8px;
-            margin-left: 8px;
-        }
-        .seta {
-            font-size: 24px;
-            padding: 8px 12px;
-            background-color: white;
-            cursor: pointer;
-            align-items: center;
-        }
-    </style>
-</head>
+		{% if galeria is not empty %}
+		<div
+			class="galeria"
+			id="galeria"
+			data-imagens="{% for img in galeria %}{{ img }}{% if not loop.last %},{% endif %}{% endfor %}">
+			<button class="setaDetalhes" onclick="anterior()">&lt;</button>
+			<img
+				id="foto"
+				src="/ProjetoTurmaB-Consessionaria/public/assets/img/galeriaImagens/{{ galeria[0] }}"
+				alt="{{ veiculo.modelo }}" />
+			<button class="setaDetalhes" onclick="proximo()">&gt;</button>
+		</div>
 
-<body>
-        <h1>Detalhes do Veículo</h1>
-    <!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
-        <form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
-            <input type="text" name="q" id="barraPesquisa" placeholder="Pesquisar marca, modelo, cor...">
-            <button>Pesquisar</button>
-            {% if pesquisa is defined %}
-                <p>Resultados para: "{{ pesquisa }}"</p>
-            {% endif %} 
-            {% if pesquisa is defined and veiculos is empty %}
-                <p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
-            {% endif %}
-        </form>
-    <!-- fim do modelo -->
+		<script>
+			// pega o atributo data-imagens e transforma em array
+			let galeriaDiv = document.getElementById("galeria");
+			let imagens = galeriaDiv.dataset.imagens.split(",");
+			let i = 0;
 
-    {% if galeria is not empty %}
-        <div class="galeria" id="galeria" data-imagens="{% for img in galeria %}{{ img }}{% if not loop.last %},{% endif %}{% endfor %}">
-            <button class="seta" onclick="anterior()">&lt;</button>
-            <img id="foto" src="/ProjetoTurmaB-Consessionaria/public/assets/img/galeriaImagens/{{ galeria[0] }}" alt="{{ veiculo.modelo }}">
-            <button class="seta" onclick="proximo()">&gt;</button>
-        </div>
+			function atualizar() {
+				document.getElementById("foto").src =
+					"/ProjetoTurmaB-Consessionaria/public/assets/img/galeriaImagens/" + imagens[i];
+			}
 
-        <script>
-            // pega o atributo data-imagens e transforma em array
-            let galeriaDiv = document.getElementById("galeria");
-            let imagens = galeriaDiv.dataset.imagens.split(',');
-            let i = 0;
+			function anterior() {
+				i--;
+				if (i < 0) i = imagens.length - 1;
+				atualizar();
+			}
 
-            function atualizar() {
-                document.getElementById("foto").src = "/ProjetoTurmaB-Consessionaria/public/assets/img/galeriaImagens/" + imagens[i];
-            }
-            
-            function anterior() {
-                i--;
-                if (i < 0) i = imagens.length - 1;
-                atualizar();
-            }
-
-            function proximo() {
-                i++;
-                if (i >= imagens.length) i = 0;
-                atualizar();
-            }
-        </script>
-    {% else %}
-        <img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ veiculo.imagem }}" alt="{{ veiculo.modelo }}" id="foto">
-    {% endif %}
-        <h2>{{ veiculo.marca }} {{ veiculo.modelo }} {{ veiculo.ano }}</h2>
-        <p>{{ veiculo.cor }}</p>
-        <p>Descrição do veículo:</p>
-        <p>{{ veiculo.descricao }}</p>
-        <a href=""><button>Fazer Proposta (em breve)</button></a>
-
-    
-
-</body>
+			function proximo() {
+				i++;
+				if (i >= imagens.length) i = 0;
+				atualizar();
+			}
+		</script>
+		{% else %}
+		<img
+			src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ veiculo.imagem }}"
+			alt="{{ veiculo.modelo }}"
+			id="foto" />
+		{% endif %}
+		<h2>{{ veiculo.marca }} {{ veiculo.modelo }} {{ veiculo.ano }}</h2>
+		<p>{{ veiculo.cor }}</p>
+		<p>Descrição do veículo:</p>
+		<p>{{ veiculo.descricao }}</p>
+		<p>Quilometragem: {{ veiculo.quilometragem }} km</p>
+		<p>Valor: R${{ veiculo.preco }}</p>
+		<a href=""><button>Fazer Proposta (em breve)</button></a>
+	</body>
 </html>

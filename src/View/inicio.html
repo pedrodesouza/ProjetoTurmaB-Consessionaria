@@ -1,135 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Início - Ousadia Motors</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+		<link
+			rel="stylesheet"
+			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+		<!-- favor colocar o css dentro do style.css -->
+		 
+	</head>
+	<body>
+		<div name="topo">
+			<header id="cabecalho">
+				<h1>Ousadia Motors</h1>
+				<hr />
+				<nav id="menu-container">
+					<!-- barra de pesquisa -->
+					<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
+						<input
+							type="text"
+							name="q"
+							id="barraPesquisa"
+							placeholder="Pesquisar marca, modelo, cor..." />
+						<button class="btnPesquisar">Pesquisar</button>
+						{% if pesquisa is defined %}
+						<p>Resultados para: "{{ pesquisa }}"</p>
+						{% endif %} {% if pesquisa is defined and veiculos is empty %}
+						<p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
+						{% endif %}
+					</form>
+					<!-- -->
+					<ul class="menu">
+						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
+						<li><a href="#">Seminovos</a></li>
+						<li><a href="#">Ofertas</a></li>
+						<li><a href="#">Serviços</a></li>
+						<li><a href="#">Novos</a></li>
+						<li><a href="#">Sobre Nós</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
+						{% if usuario is null %}
+						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
+						{% endif %} {% if usuario is not null %}
+						<form
+							id="logout"
+							action="/ProjetoTurmaB-Consessionaria/logout"
+							method="post"
+							style="margin-left: 10px">
+							<input type="submit" value="Sair" />
+						</form>
+						{% endif %}
+					</ul>
+					<div id="icones-direita">
+						<a href="#" id="Agenda" title="Agenda"
+							><i class="fa-solid fa-calendar-days"></i
+						></a>
+						<a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
+						<a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
+						<a href="#" id="carrinho" title="Carrinho"
+							><i class="fa-solid fa-cart-shopping"></i
+						></a>
+					</div>
+				</nav>
+				<hr />
+			</header>
+		</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início</title>
-</head>
+		{% if usuario is not null %}
+		<li><p class="msgBoasVindas">Bem-vindo, {{ usuario.nome }}!</p></li>
+		{% endif %}
+		<main class="mainInicio">
+			<!-- veiculos -->
+			<div class="catalogo-container">
+				{% for v in veiculos %}
+				<div class="item-card">
+					<div class="item-img-wrapper">
+						<img
+							src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
 
-<style>
-    header {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background-color: rgb(53, 53, 53);
-        width: 100%;
-        height: 3000000000%;
-    }
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
 
-    #LogECad {
-        display: flex;
-    }
-</style>
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
 
-<body>
-    <header>
-        <div id="LogECad">
-            <a href="/src/View/auth/login.html">Login</a>
-            <a href="/src/View/auth/register.html">Cadastrar-se</a>
-        </div>
-        <div id="LogoInicio"></div>
-        <h2>Home</h2>
-        <h2>Estoque</h2>
-        <h2>Sobre nós</h2>
-    </header>
+						<a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<!-- veiculos -->
+		</main>
 
-    <main>
-        <div id="Carro1">
-            <div id="ImgCarro1"></div>
-            <h4>Nome do carro............</h4>
-            <div>
-                <p>R$000.000,00</p>
-                <button>Ver detalhes</button>
-            </div>
-        </div>
+		<div class="botoesPaginacao">
+			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
 
-        <div id="Carro2">
-            <div id="ImgCarro2"></div>
-            <h4>Nome do carro............</h4>
-            <div>
-                <p>R$000.000,00</p>
-                <button>Ver detalhes</button>
-            </div>
-        </div>
+			<span>{{ pagina }}</span>
 
-        <div id="Carro3">
-            <div id="ImgCarro3"></div>
-            <h4>Nome do carro............</h4>
-            <div>
-                <p>R$000.000,00</p>
-                <button>Ver detalhes</button>
-            </div>
-        </div>
+			<a class="seta" href="?page={{ pagina + 1 }}"> &gt; </a>
+		</div>
 
-        <div id="Carro4">
-            <div id="ImgCarro4"></div>
-            <h4>Nome do carro............</h4>
-            <div>
-                <p>R$000.000,00</p>
-                <button>Ver detalhes</button>
-            </div>
-        </div>
-
-        <div id="Carro5">
-            <div id="ImgCarro5"></div>
-            <h4>Nome do carro............</h4>
-            <div>
-                <p>R$000.000,00</p>
-                <button>Ver detalhes</button>
-            </div>
-        </div>
-
-        <div id="Carro6">
-            <div id="ImgCarro6"></div>
-            <h4>Nome do carro............</h4>
-            <div>
-                <p>R$000.000,00</p>
-                <button>Ver detalhes</button>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div id="EnderecoTudo">
-            <div id="IconEndereco"></div>
-            <p>R. Avenida não sei oq, Jardim sei lá, São Paulo - SP: 00000-000</p>
-        </div>
-
-        <div id="TelefoneTudo">
-            <div id="IconTelefone"></div>
-            <p>Atendimento</p>
-            <p>(00) 0000-0000</p>
-        </div>
-
-        <div id="WhatsappTudo">
-            <div id="IconWhatsApp"></div>
-            <p>WhatsApp</p>
-            <p>(00) 90000-0000</p>
-        </div>
-
-        <div id="EmailTudo">
-            <div id="IconEmail"></div>
-            <p>Email</p>
-            <p>emailFoda@gmail.com</p>
-        </div>
-
-        <div id="FacebookTudo">
-            <div id="IconFacebook"></div>
-            <p>Facebook</p>
-            <p>Facebook.com.br</p>
-        </div>
-
-        <div id="InstaTudo">
-            <div id="IconInstagram"></div>
-            <p>Instagram</p>
-            <p>@InstaConsessionaria</p>
-        </div>
-    </footer>
-
-    <form id="logout" action="/ProjetoTurmaB-Consessionaria/" method="post">
-        <input type="submit" value="Sair" />
-    </form>
-</body>
-
+		<footer>
+			<p>Ousadia Motors &copy; 2024</p>
+		</footer>
+	</body>
 </html>
