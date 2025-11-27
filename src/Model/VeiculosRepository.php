@@ -15,7 +15,7 @@ class VeiculosRepository
 
     public function buscarVeiculos(string $termo): array
     {
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE marca LIKE :termo OR modelo LIKE :termo OR cor LIKE :termo OR descricao LIKE :termo OR ano LIKE :termo");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS WHERE marca LIKE :termo OR modelo LIKE :termo OR cor LIKE :termo OR descricao LIKE :termo OR ano LIKE :termo");
         $stmt->bindValue(':termo', "%$termo%");
         $stmt->execute();
 
@@ -40,7 +40,7 @@ class VeiculosRepository
 
     public function veiculosSelectAll(): array
     {
-        $stmt = $this->conexao->query("SELECT * FROM veiculos");
+        $stmt = $this->conexao->query("SELECT * FROM VEICULOS");
         $listaVeiculos = [];
 
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -62,7 +62,7 @@ class VeiculosRepository
 
     public function veiculosDetalhes(int $id): ?Veiculos
     {
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE id = :id");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS WHERE id = :id");
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
