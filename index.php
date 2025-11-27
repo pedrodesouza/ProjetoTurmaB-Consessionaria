@@ -18,6 +18,12 @@ $roteador->post("/proposta", "PropostaController:enviar");
 $roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
 
+// rotas de autenticação
+$roteador->get("/login", "AuthController:showLoginForm");
+$roteador->post("/login", "AuthController:login");
+$roteador->get("/register", "AuthController:showRegisterForm");
+$roteador->post("/register", "AuthController:register");
+
 // rota para detalhes do veículo
 $roteador->group("/veiculos");
 $roteador->get("/", "Principal:catalogo");
