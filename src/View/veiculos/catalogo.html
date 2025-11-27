@@ -9,7 +9,7 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 		<link
 			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+			href="/public/assets/css/style.css" />
 		<!-- favor colocar o css dentro do style.css -->
 	</head>
 	<body>
@@ -106,7 +106,7 @@
 				>
 					<div class="item-img-wrapper">
 						<img
-							src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
+							src="/public/assets/img/{{ v.imagem }}"
 							alt="{{ v.modelo }}" />
 					</div>
 
@@ -116,12 +116,278 @@
 
 						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
 
-						<a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
+						<a href="/veiculos/{{ v.id }}">
 							<button class="item-button">Ver detalhes</button>
 						</a>
 					</div>
 				</div>
-				{% endfor %}
+
+					{% for v in veiculos %}
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+			<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+			{% endfor %}
 			</div>
 		</main>
 
