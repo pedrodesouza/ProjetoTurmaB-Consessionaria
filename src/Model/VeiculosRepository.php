@@ -102,7 +102,7 @@ class VeiculosRepository
         $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS LIMIT :offset, :limite");
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(); 
 
         $listaVeiculos = [];
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
