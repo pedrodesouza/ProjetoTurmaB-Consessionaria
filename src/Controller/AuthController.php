@@ -163,22 +163,5 @@
             exit;
         }
     }
-
-    public function salvarVeiculos() {
-    $id = $_POST['id'] ?? null;
-    $marca = $_POST['marca'] ?? '';
-    $modelo = $_POST['modelo'] ?? '';
-    $preco = $_POST['preco'] ?? '';
-    $imagem = null;
-
-    
-    if (!empty($_FILES['imagem']['name'])) {
-        $pasta = './uploads/';
-        if (!is_dir($pasta)) mkdir($pasta, 0777, true);
-        $arquivo = $pasta . basename($_FILES['imagem']['name']);
-        move_uploaded_file($_FILES['imagem']['tmp_name'], $arquivo);
-        $imagem = $arquivo;
-    }
-    }
 }
 ?>
